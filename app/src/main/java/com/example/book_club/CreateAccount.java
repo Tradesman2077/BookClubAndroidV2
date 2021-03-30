@@ -3,6 +3,7 @@ package com.example.book_club;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import Util.BookApi;
 
 public class CreateAccount extends AppCompatActivity {
 
+    private static final String TAG = "REGISTER";
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser currentUser;
@@ -49,6 +51,7 @@ public class CreateAccount extends AppCompatActivity {
     private Button createUserAccountButton;
     private EditText userNameEditText;
 
+    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +103,7 @@ public class CreateAccount extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    ///method to create an account
     private void createUserEmailAccount(String email, String password, String username){
         if (!TextUtils.isEmpty(email)
         && !TextUtils.isEmpty(password)
@@ -117,7 +121,7 @@ public class CreateAccount extends AppCompatActivity {
                             userObj.put("userId", currentUserId);
                             userObj.put("username", username);
 
-                            //save to fs
+                            //save to db
                             collectionReference.add(userObj).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
@@ -132,13 +136,14 @@ public class CreateAccount extends AppCompatActivity {
                                                 bookApi.setUserId(currentUserId);
                                                 bookApi.setUsername(name);
 
-                                                Intent intent = new Intent(CreateAccount.this, LibraryActivity.class);
+                                                Intent intent = new Intent(CreateAccount.this, MainMenu.class);
                                                 intent.putExtra("username", name);
                                                 intent.putExtra("user_id", currentUserId);
+                                                Toast.makeText(getApplicationContext(), "Account registered", Toast.LENGTH_SHORT).show();
                                                 startActivity(intent);
                                             }
                                             else{
-
+                                                Log.d(TAG, "onComplete: + something went wrong");
                                             }
                                         }
                                     });
@@ -146,32 +151,34 @@ public class CreateAccount extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-
+                                    Log.d(TAG, "onFailure: " + e);
                                 }
                             });
 
                         }
                         else{
-                            ///somthing wrong
+                            ///something wrong
+                            Log.d(TAG, "onComplete: " + "error");
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
+                        Log.d(TAG, "onFailure: " + e);
                     }
                 });
 
             }
         else{
-
+            Toast.makeText(getApplicationContext(),
+                    "please check credentials have been entered correctly",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         currentUser = mAuth.getCurrentUser();
         mAuth.addAuthStateListener(authStateListener);
 

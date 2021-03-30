@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import model.Book;
-
+//adaptor for recycler view used in library
 public class BookRecyclerAdaptor extends RecyclerView.Adapter<BookRecyclerAdaptor.ViewHolder> {
     private Context context;
     private List<Book> bookList;
@@ -49,7 +49,7 @@ public class BookRecyclerAdaptor extends RecyclerView.Adapter<BookRecyclerAdapto
     public void onBindViewHolder(@NonNull BookRecyclerAdaptor.ViewHolder holder, int position) {
         Book book = bookList.get(position);
         String imageUrl;
-
+        //set viewholder data for each element in the recycler view
         holder.title.setText(book.getTitle());
         holder.author.setText(book.getAuthor());
         holder.isbn.setText(book.getIsbn());
@@ -71,6 +71,7 @@ public class BookRecyclerAdaptor extends RecyclerView.Adapter<BookRecyclerAdapto
             }
         });
 
+        //picasso library used for fast image import into image view
         Picasso.get().load(imageUrl).placeholder(R.drawable.ic_action_name)
                 .fit().rotate(90).into(holder.image);
     }
@@ -99,7 +100,7 @@ public class BookRecyclerAdaptor extends RecyclerView.Adapter<BookRecyclerAdapto
 
             super(itemView);
             context = ctx;
-
+            //get data from book and add to itemView
             title = itemView.findViewById(R.id.book_title_list);
             author = itemView.findViewById(R.id.book_author_list);
             isbn = itemView.findViewById(R.id.book_isbn_list);

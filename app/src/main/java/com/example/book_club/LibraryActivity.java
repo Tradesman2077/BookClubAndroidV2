@@ -35,6 +35,8 @@ import ui.BookRecyclerAdaptor;
 
 public class LibraryActivity extends AppCompatActivity {
 
+    //main library with recycler view and menu displays all books on db
+
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
@@ -50,14 +52,14 @@ public class LibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
-
-
         getSupportActionBar().setTitle("Library");
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
 
         noBooksAdded = findViewById(R.id.list_noBooks_textView);
+
+        //set up recycler view
         bookList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -72,6 +74,7 @@ public class LibraryActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_signout) {
             if (user != null && firebaseAuth != null) {
+                //sign out
                 firebaseAuth.signOut();
                 startActivity(new Intent(LibraryActivity.this, MainActivity.class));
                 finish();
@@ -79,6 +82,8 @@ public class LibraryActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //add all books to recycler view
     @Override
     protected void onStart() {
         super.onStart();
@@ -106,6 +111,7 @@ public class LibraryActivity extends AppCompatActivity {
             }
         });
     }
+    //various icons actions  for menu
     public void search(MenuItem item) {
         startActivity(new Intent(LibraryActivity.this, SearchActivity.class));
     }

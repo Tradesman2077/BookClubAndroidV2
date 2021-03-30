@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
+        ///check if already logged into the app before to skip out having to login again
+
         firebaseAuth = FirebaseAuth.getInstance();
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -58,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
                             if (error != null){
                                 return;
                             }
-                            String name;
-
                             if (!value.isEmpty()){
                                 for (QueryDocumentSnapshot snapshot : value){
                                     BookApi bookApi = BookApi.getInstance();
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         }
-
                     });
                 }
                 else{
@@ -79,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-
-
 
         getStartedButton = findViewById(R.id.start_button);
         getStartedButton.setOnClickListener(new View.OnClickListener() {

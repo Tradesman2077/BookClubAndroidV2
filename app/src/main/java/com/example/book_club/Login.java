@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
 
     }
 
-    //method to check if input is an email
+    //method to check if input is a valid email
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
@@ -123,6 +123,7 @@ public class Login extends AppCompatActivity {
 
                                                     progressBar.setVisibility(View.INVISIBLE);
                                                     for (QueryDocumentSnapshot snapshot : queryDocumentSnapshots) {
+                                                        //set up api
                                                         BookApi bookApi = BookApi.getInstance();
                                                         bookApi.setUsername(snapshot.getString("username"));
                                                         bookApi.setUserId(snapshot.getString("userId"));

@@ -54,6 +54,7 @@ public class SearchActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get keywords convert to arr and pattern match each word
                 searchResultsLayout.removeAllViews();
                 String keyWords = searchText.getText().toString().trim();
                 String[] searchStringWordArr = keyWords.split(" ");
@@ -70,6 +71,7 @@ public class SearchActivity extends AppCompatActivity {
                                     Pattern pattern = Pattern.compile(".*" + word.toLowerCase() + ".*");
                                     Matcher matcher = pattern.matcher(bookTitle.toLowerCase() + authorName.toLowerCase());
                                     if (matcher.find()) {
+                                        //if results found then add text view to layout for each result
                                         resultsFound = true;
                                         TextView newTextView = new TextView(getApplicationContext());
                                         newTextView.setText(String.format("%s\n%s\n", bookTitle, authorName));
@@ -79,6 +81,8 @@ public class SearchActivity extends AppCompatActivity {
                                         newTextView.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+
+                                                //onclick for textViews that takes user to book view
                                                 Intent bookViewIntent = new Intent(SearchActivity.this, BookViewActivity.class);
                                                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -88,8 +92,6 @@ public class SearchActivity extends AppCompatActivity {
                                             }
                                         });
                                     }
-
-
                                 }
                                 if (!resultsFound){
                                     noResults.setVisibility(View.VISIBLE);

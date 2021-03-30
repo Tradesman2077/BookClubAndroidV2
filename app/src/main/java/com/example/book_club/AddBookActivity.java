@@ -116,6 +116,7 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    //method to save book to db as an object and adds news to timeline
     private void saveBook() {
         String title = titleEditText.getText().toString().trim();
         String author = authorEditText.getText().toString().trim();
@@ -143,7 +144,7 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
                             book.setUserName(currentUserName);
                             book.setUserId(currentUserId);
                             book.setIsbn(isbn);
-
+                                // add book object to db
                             collectionReference.add(book).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
@@ -156,7 +157,7 @@ public class AddBookActivity extends AppCompatActivity implements View.OnClickLi
                                     newsColleciton.add(newsData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                         @Override
                                         public void onSuccess(DocumentReference documentReference) {
-                                            Toast.makeText(getApplicationContext(), "Book  added", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Book added", Toast.LENGTH_SHORT).show();
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override

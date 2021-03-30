@@ -5,7 +5,8 @@ import android.app.Application;
 public class BookApi extends Application {
 
 
-    ////allows access to current user throughout the app
+    ////allows access to current user throughout the app using a
+    // singleton class to provide user data to rest of app
 
 
 

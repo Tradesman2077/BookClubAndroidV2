@@ -2,6 +2,8 @@ package model;
 
 import com.google.firebase.Timestamp;
 
+//book model class used for inputting book objects into database
+
 public class Book {
     private String title;
     private String author;

@@ -24,4 +24,5 @@
     <string name="submit_review_button_text">submit</string>
     <string name="leave_a_review">Leave a review</string>
     <string name="your_favourites">Your Favourites</string>
+    <string name="click_for_reviews_and_more">Click for reviews and more</string>
 </resources>

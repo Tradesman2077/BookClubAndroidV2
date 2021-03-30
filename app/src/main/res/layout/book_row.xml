@@ -70,7 +70,14 @@
             android:textColor="#656565"
             android:textStyle="italic" />
 
-
+        <TextView
+            android:id="@+id/info_textView"
+            android:layout_width="match_parent"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_height="wrap_content"
+            android:text="@string/click_for_reviews_and_more"
+            android:textAlignment="center" />
 
 
     </LinearLayout>

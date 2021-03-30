@@ -56,6 +56,7 @@ public class MainMenu extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user  =firebaseAuth.getCurrentUser();
 
+        //get news feed data from db
         newsCollection.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -70,6 +71,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
+        //continue to library
         libraryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
