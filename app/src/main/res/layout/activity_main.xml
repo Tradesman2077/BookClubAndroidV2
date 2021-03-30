@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/advent_pro"
+        android:text="@string/book_club_title_text"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="35sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_layout"
+        android:gravity="center_horizontal" >
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:cardUseCompatPadding="true"
+                app:cardElevation="6dp"
+                app:cardCornerRadius="8dp">
+
+                <TextView
+                    android:id="@+id/titiel_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:text="@string/book_club_greeting"
+                    android:textColor="#808080" />
+            </androidx.cardview.widget.CardView>
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/advent_pro"
+        android:text="@string/get_started_text"
+        android:textColor="#FB1C0C"
+        android:textSize="20dp"
+        app:backgroundTint="#000000" />
+
+</LinearLayout>
+
+
+

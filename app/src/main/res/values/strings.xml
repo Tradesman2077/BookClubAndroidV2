@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Book_Club</string>
+    <string name="bookclub_title">BookClub</string>
+    <string name="book_club_title_text">Comp-Sci Book Club</string>
+    <string name="book_club_greeting">A book club dedicated to computer science</string>
+    <string name="get_started_text">Lets go!</string>
+    <string name="email_hint">enter email</string>
+    <string name="password_hint">password</string>
+    <string name="login_text">Login</string>
+    <string name="or_register_text">or</string>
+    <string name="register_text">register</string>
+    <string name="username">username</string>
+    <string name="username_hint">username</string>
+    <string name="title_edit_text">Title</string>
+    <string name="no_books_uploaded_yet_text">No books uploaded yet !</string>
+    <string name="title_hint_book_row">title</string>
+    <string name="author_hint_book_row">author</string>
+    <string name="isbn_hint_book_row">isbn</string>
+    <string name="todo">TODO</string>
+    <string name="date_hit_book_row">date</string>
+    <string name="no_books_found">no books found !</string>
+    <string name="search_button_text">Search</string>
+    <string name="enter_keywords">Enter keywords</string>
+    <string name="submit_review_button_text">submit</string>
+    <string name="leave_a_review">Leave a review</string>
+    <string name="your_favourites">Your Favourites</string>
+</resources>
